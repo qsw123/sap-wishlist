@@ -8,8 +8,8 @@ WishlistDemo
 (no Junit test added)
 
 1. to use **document** service:
-
 [url = https://api.beta.yaas.io/hybris/document/v1/{tenant}/{clientId}/data/{docType};]
+
     - we need credentials to access its APIs because it goes through the YaaS API proxy for safty.
     - so we need to create organization in Builder to:
         - subscribe pacages
@@ -46,8 +46,6 @@ yaas-storefront
 
 (no Jasmine/Karma/E2E test added)
 
-
-----------
 
 [controller(: model + user interaction)  --> UI service  --> REST endpoint]
 
