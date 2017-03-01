@@ -5,11 +5,11 @@
 WishlistDemo
 ------------
 
-----------
 (no Junit test added)
 
-1. to use **document** service:
+1. to use **document** service:       
 [url = https://api.beta.yaas.io/hybris/document/v1/{tenant}/{clientId}/data/{docType};]
+
     - we need credentials to access its APIs because it goes through the YaaS API proxy for safty.
     - so we need to create organization in Builder to:
         - subscribe pacages
@@ -46,8 +46,6 @@ yaas-storefront
 
 (no Jasmine/Karma/E2E test added)
 
-
-----------
 
 [controller(: model + user interaction)  --> UI service  --> REST endpoint]
 
@@ -106,6 +104,7 @@ A simple webshop would use services such as Customer, Product, Cart, Checkout, P
 &emsp;The API Tokens are necessary as YaaS authenticates with OAuth2.
 ...
 &emsp;You will see the plaintext of your **Client ID** and **Client Secret**. These are your login data, you need them when you talk to YaaS to receive an **Access Token** (for now just have the data ready, we’ll use the SDK for receiving a token).
+
 > &emsp;- [YaaS in a Nutshell](https://devportal.yaas.io/overview/yaasinanutshell/index.html)
 **Scopes**
 &emsp;The permission settings in YaaS are called, scopes. A scope is a permission setting that specifies access to resources and methods in a service. It is used in combination with authorization. APIs are secured using the OAuth 2.0 protocol, which provides account authentication and authorization with the use of a bearer access token. In order to use the APIs, you need a client ID, which can be found in your project in the Builder. After successful authentication, the service verifies project members and grants the required scopes.
