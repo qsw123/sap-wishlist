@@ -18,7 +18,6 @@ angular.module('ds.products', [
     'ds.shared',
     'ds.cart',
     'ds.fees',
-    'ds.wishlist',
     'ui.bootstrap',
     'angularMoment'
 ]);

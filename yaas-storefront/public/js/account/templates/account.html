@@ -107,37 +107,4 @@
 
   </section>
 
-  <!-- section for wishlist  -->
-  <section class="mediumgray" ng-cloak>
-    <div class="container-fluid">
-      <div class="section-headline clearfix">
-        <h2>{{'WISHLIST' | translate}}</h2>
-      </div>
-
-      <div ng-if="orders.length"  class="table-responsive hidden-sm hidden-xs" clearfix>
-        <button class="btn btn-secondary btn-md pull-right" ng-click="getTotalPriceForWishlist()">
-          {{'TOTAL PRICE' | translate}}
-        </button>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>{{'DATE' | translate}}</th>
-              <th>{{'PRODUCT' | translate}}</th>
-              <th>{{'PRICE' | translate}}</ht>
-            </tr>
-          </thead>
-          <tbody>
-              <tr ng-repeat="item in wishlist.items">
-                  <td>{{item.created | date: 'medium'}}</td>
-                  <td>{{item.product}}</td>
-                  <td>{{item.price | currency}}</td>
-              </tr>
-          </tbody>
-        </table>
-      </div>
-      
-    </div>
-  
-  </section>
-
 </div>

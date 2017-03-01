@@ -287,18 +287,7 @@ angular.module('ds.router', [])
                                     return [];
                                 }
                             );
-                        }],
-
-                        wishlist: ['WishlistSvc', function(WishlistSvc) {
-                            return WishlistSvc.getWishList().then(
-                                function (response) {
-                                    return response;
-                                },
-                                function () {
-                                    return [];
-                                }
-                            );
-                        }],
+                        }]
                     },
                     data: {
                         auth: 'authenticated'

@@ -9,10 +9,6 @@
       "type":"string",
       "pattern":"^.+"
     },
-    "price":
-    {
-      "type":"integer",
-    },
     "amount":
     {
       "type":"integer",
@@ -29,5 +25,5 @@
       "format":"date-time"
     }
   },
-  "required":["product", "price", "amount"]
+  "required":["product", "amount"]
 }

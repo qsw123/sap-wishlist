@@ -13,9 +13,9 @@
 
 angular.module('ds.account')
 
-    .controller('AccountCtrl', ['$scope', 'wishlist', 'addresses', 'account', 'orders', 'OrderListSvc', 'AccountSvc', '$uibModal', 'GlobalData', '$translate',
+    .controller('AccountCtrl', ['$scope', 'addresses', 'account', 'orders', 'OrderListSvc', 'AccountSvc', '$uibModal', 'GlobalData', '$translate',
 
-        function ($scope, wishlist, addresses, account, orders, OrderListSvc, AccountSvc, $uibModal, GlobalData, $translate) {
+        function ($scope, addresses, account, orders, OrderListSvc, AccountSvc, $uibModal, GlobalData, $translate) {
 
             var self = this;
             self.allOrdersLoaded = false;
@@ -46,9 +46,6 @@ angular.module('ds.account')
             $scope.showOrderButtons = ($scope.orders.length >= $scope.showOrdersDefault);
             $scope.showOrdersFilter = $scope.showOrdersDefault;
 
-            //wishlist
-            $scope.wishlist = wishlist;
-            
             var extractServerSideErrors = function (response) {
                 var errors = [];
                 if (response.status === 400) {
@@ -211,15 +208,6 @@ angular.module('ds.account')
                 $scope.showAllAddressButton = !$scope.showAllAddressButton;
                 $scope.showAddressFilter = $scope.showAllAddressButton ? $scope.showAddressDefault : $scope.addresses.length;
                 $scope.showAddressButtons = ($scope.addresses.length > $scope.showAddressDefault);
-            };
-
-            $scope.getTotalPriceForWishlist = function () {
-                    angular.forEach(this.wishlist.items, function(item){
-                            totalPrice += item.price;
-                    });
-                }
-
-                alert('total price is: ' + totalPrice);
             };
 
             /*
