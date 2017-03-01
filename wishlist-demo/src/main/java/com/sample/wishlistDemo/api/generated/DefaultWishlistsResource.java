@@ -19,13 +19,18 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	@javax.ws.rs.core.Context
 	private javax.ws.rs.core.UriInfo uriInfo;
 
+	@Autowired
+    private DocuServiceWrapper dsw;
+
 	/* GET / */
 	@Override
 	public Response get(final YaasAwareParameters yaasAware)
 	{
 		// place some logic here
+		Wishlist[] wishlists = dsw.getWishlists();
+
 		return Response.ok()
-			.entity(new java.util.ArrayList<Wishlist>()).build();
+				.entity(Arrays.asList(wishlists)).build();
 	}
 
 	/* POST / */
@@ -33,6 +38,8 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	public Response post(final YaasAwareParameters yaasAware, final Wishlist wishlist)
 	{
 		// place some logic here
+		dsw.postWishList(wishlist);
+
 		return Response.created(uriInfo.getAbsolutePath())
 			.build();
 	}
@@ -42,8 +49,10 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	public Response getByWishlistId(final YaasAwareParameters yaasAware, final java.lang.String wishlistId)
 	{
 		// place some logic here
+        Wishlist wishlist = dsw.getWishlistById(wishlistId);
+
 		return Response.ok()
-			.entity(new Wishlist()).build();
+			.entity(wishlist).build();
 	}
 
 	/* PUT /{wishlistId} */
@@ -51,6 +60,8 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	public Response putByWishlistId(final YaasAwareParameters yaasAware, final java.lang.String wishlistId, final Wishlist wishlist)
 	{
 		// place some logic here
+		dsp.putWishlistById(wishlistId, wishlist);
+
 		return Response.ok()
 			.build();
 	}
@@ -60,6 +71,8 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	public Response deleteByWishlistId(final YaasAwareParameters yaasAware, final java.lang.String wishlistId)
 	{
 		// place some logic here
+		dsw.deleteWishlistById(wishlistId)
+
 		return Response.noContent()
 			.build();
 	}
@@ -70,8 +83,10 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 			final YaasAwareParameters yaasAware,  final java.lang.String wishlistId)
 	{
 		// place some logic here
+		WishlistItem[] wishlistItems = dsw.getByWishlistIdWishlistItems(wishlistId);
+
 		return Response.ok()
-				.entity(new java.util.ArrayList<WishlistItem>()).build();
+				.entity(Arrays.asList(wishlistItems)).build();
 	}
 
 	@Override
@@ -79,6 +94,8 @@ public class DefaultWishlistsResource implements com.sample.wishlistDemo.api.gen
 	Response postByWishlistIdWishlistItems(final YaasAwareParameters yaasAware,
 			final java.lang.String wishlistId, final WishlistItem wishlistItem){
 		// place some logic here
+		dsw.postByWishlistIdWishlistItems(wishlistId, wishlistItem);
+
 		return Response.noContent()
 					.build();
 	}

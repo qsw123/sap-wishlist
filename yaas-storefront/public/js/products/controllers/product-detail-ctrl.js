@@ -17,8 +17,8 @@ angular.module('ds.products')
      * Listens to the 'cart:updated' event.  Once the item has been added to the cart, and the updated
      * cart information has been retrieved from the service, the 'cart' view will be shown.
      */
-    .controller('ProductDetailCtrl', ['$scope', '$rootScope', '$location', 'CartSvc', 'product', 'lastCatId', 'variantId', 'GlobalData', 'CategorySvc','$filter', '$uibModal', 'shippingZones', 'Notification', 'ProductExtensionHelper', 'ProductVariantsHelper', 'variants', 'variantPrices', 'productFactory', 'FeeSvc',
-        function($scope, $rootScope, $location, CartSvc, product, lastCatId, variantId, GlobalData, CategorySvc, $filter, $uibModal, shippingZones, Notification, ProductExtensionHelper, ProductVariantsHelper, variants, variantPrices, productFactory, FeeSvc) {
+    .controller('ProductDetailCtrl', ['$scope', '$rootScope', '$location', 'CartSvc', 'WishlistSvc', 'product', 'lastCatId', 'variantId', 'GlobalData', 'CategorySvc','$filter', '$uibModal', 'shippingZones', 'Notification', 'ProductExtensionHelper', 'ProductVariantsHelper', 'variants', 'variantPrices', 'productFactory', 'FeeSvc',
+        function($scope, $rootScope, $location, CartSvc, WishlistSvc, product, lastCatId, variantId, GlobalData, CategorySvc, $filter, $uibModal, shippingZones, Notification, ProductExtensionHelper, ProductVariantsHelper, variants, variantPrices, productFactory, FeeSvc) {
             var modalInstance;
 
             $scope.activeTab = 'description';
@@ -128,6 +128,23 @@ angular.module('ds.products')
 
             $scope.$on('$destroy', unbind);
 
+            $scope.addToWishlist = function () {
+                var date = new Date();
+                var newWishlist = {
+                    id: 'defaultWishlistId',
+                    owner: 'wishlistOwner@hybris.com',
+                    title: 'defaultWishlistTitle',
+                    items: [
+                        {
+                            product: $scope.product.product.id,
+                            price: $scope.product.prices[0].effectiveAmount;
+                            amount: $scope.productDetailQty,
+                            createdAt: date;
+                        }
+                    ]
+                };
+                WishlistSvc.createWishlist(newWishlist);
+            };
             /** Add the product to the cart.  'Buy' button is disabled while cart update is in progress. */
             $scope.addToCartFromDetailPage = function () {
                 $scope.error = false;
